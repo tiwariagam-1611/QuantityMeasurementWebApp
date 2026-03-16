@@ -1,0 +1,63 @@
+body {
+    background-color: #f5f6fa;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(to right, #0ba360, #3cba92, #30dd8a);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Section Title */
+.section-title {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Type Cards */
+.type-card {
+    background: #eafaf1;
+    border-radius: 12px;
+    padding: 25px;
+    border: 2px solid transparent;
+}
+
+.type-card.active {
+    border: 2px solid #27ae60;
+    background: #d4f5e9;
+}
+
+/* Action Buttons */
+.action-btn {
+    background: #eee;
+    border-radius: 8px;
+    padding: 12px 20px;
+    border: none;
+}
+
+.action-btn:hover {
+    background: #ddd;
+}
+
+.action-btn.active {
+    background: linear-gradient(to right, #0ba360, #3cba92, #30dd8a);
+    color: white;
+}
+
+/* Input Boxes */
+.input-box {
+    background: #eafaf1;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.input-box h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #27ae60;
+}
+
