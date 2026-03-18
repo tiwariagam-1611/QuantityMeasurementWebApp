@@ -1,19 +1,24 @@
 <!-- 
-UC-JS-01: Create JSON Server Database
-Goal: Set up db.json with collections for units, conversions, and history.
-Use: Provides the data layer for the Quantity Measurement WebApp.
-Actor: Developer (during initial project setup).
+UC-JS-02: App Initialisation
+Goal: Initialise the application on page load by wiring up event listeners 
+      and loading default data.
+Actor: End User
+Trigger: DOMContentLoaded event fires.
 Steps Learned:
-  - Defined "units" array with measurement types (Length, Weight, Volume, Temperature).
-  - Added "conversions" array with factor-based and formula-based rules.
-  - Created "history" array, left empty for runtime population.
-  - Verified JSON syntax and tested endpoints with json-server.
-Outcome: Running json-server exposes /units, /conversions, and /history endpoints 
-         for use by the application.
+  - Wrapped all code inside DOMContentLoaded to ensure DOM readiness.
+  - Declared a shared "state" object to track current selections.
+  - Called attachEventListeners() to prepare UI interactions.
+  - Called loadUnits("Length") to pre-fill FROM and TO dropdowns.
+  - Set first type-card and first action-button as active.
+  - Hid operator row initially with toggleOperators(false).
+  - Loaded history records with loadHistory().
+Outcome: Application starts in a consistent state, ready for conversions, 
+         comparisons, or arithmetic operations.
 
 @author Developer
-@version 1.0
+@version 2.0
 -->
+
 
 
 <!DOCTYPE html>
@@ -140,6 +145,6 @@ Outcome: Running json-server exposes /units, /conversions, and /history endpoint
     <script src="https://example.com/fontawesome/v7.0.1/js/fontawesome.js" data-auto-replace-svg="nest"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/solid.js"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/brands.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>
