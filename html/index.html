@@ -1,3 +1,21 @@
+<!-- 
+UC-JS-01: Create JSON Server Database
+Goal: Set up db.json with collections for units, conversions, and history.
+Use: Provides the data layer for the Quantity Measurement WebApp.
+Actor: Developer (during initial project setup).
+Steps Learned:
+  - Defined "units" array with measurement types (Length, Weight, Volume, Temperature).
+  - Added "conversions" array with factor-based and formula-based rules.
+  - Created "history" array, left empty for runtime population.
+  - Verified JSON syntax and tested endpoints with json-server.
+Outcome: Running json-server exposes /units, /conversions, and /history endpoints 
+         for use by the application.
+
+@author Developer
+@version 1.0
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +26,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    
 </head>
 <body>
 
     <div class="p-0">
 
         <!-- HEADER -->
-        <div class="header text-center text-white py-4">
-            <h1>Welcome To Quantity Measurement</h1>
+        
+        <div class="header text-center text-white py-4"onclick="changeBg()">
+            <h1 id="h1j">Welcome To Quantity Measurement</h1>
         </div>
         <div class="m-5">
             <p class="section-title">CHOOSE TYPE</p>
@@ -120,5 +140,6 @@
     <script src="https://example.com/fontawesome/v7.0.1/js/fontawesome.js" data-auto-replace-svg="nest"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/solid.js"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/brands.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
