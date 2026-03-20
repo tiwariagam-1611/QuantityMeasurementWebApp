@@ -26,3 +26,21 @@ function populateDropdown(selectEl, units) {
         selectEl.appendChild(opt);
     });
 }
+
+// UC-JS-11: Set Active Button
+
+function setActive(parentEl, clickedEl, childSelector) {
+
+    // check parent exists
+    if (!parentEl) {
+        return;
+    }
+
+    // remove active from all children
+    parentEl.querySelectorAll(childSelector).forEach(el => {
+        el.classList.remove("active");
+    });
+
+    // add active to clicked element
+    clickedEl.classList.add("active");
+}

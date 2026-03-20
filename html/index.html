@@ -1,20 +1,18 @@
 <!-- 
-UC-JS-10: Populate Unit Dropdown
-Goal: Fill a select element with unit options retrieved from the server.
+UC-JS-11: Set Active Button
+Goal: Highlight the selected button and remove active state from others.
 Actor: End User (via ui.js)
-Trigger: getUnits() returns data.
+Trigger: User clicks a selectable button (type, action, operator).
 Steps Learned:
-  - Cleared existing dropdown options using innerHTML.
-  - Created a default disabled option as a prompt.
-  - Iterated over units array using forEach().
-  - Created option elements dynamically using document.createElement().
-  - Set value and textContent for each option.
-  - Appended options to the select element.
-  - Handled null select element safely by returning early.
-Outcome: Dropdown is populated with unit options and ready for user selection.
+  - Selected all sibling elements using querySelectorAll().
+  - Removed "active" class from all elements.
+  - Added "active" class only to the clicked element.
+  - Ensured only one element remains active at a time.
+  - Handled null parent element safely by returning early.
+Outcome: UI correctly reflects the current selection with proper highlighting.
 
 @author Developer
-@version 10.0
+@version 11.0
 -->
 
 

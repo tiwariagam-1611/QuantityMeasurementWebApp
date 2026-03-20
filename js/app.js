@@ -51,5 +51,11 @@ function showError(msg) {
     alert(msg);
 }
 
-
+//UC 11 Test
+document.querySelectorAll(".type-card").forEach(card => {
+    card.addEventListener("click", function () {
+        const parent = card.parentElement.parentElement;
+        setActive(parent, card, ".type-card");
+    });
+});
 
