@@ -27,11 +27,13 @@ async function loadUnits(type) {
     try {
         const units = await getUnits(type);
 
-        console.log("Units loaded:", units);
+        const selects = document.querySelectorAll(".input-box select");
+
+        populateDropdown(selects[0], units);
+        populateDropdown(selects[1], units);
 
     } catch (err) {
         console.error("Error loading units:", err);
-        showError("Failed to load units");
     }
 }
 
@@ -47,28 +49,6 @@ function toggleOperators(show) {
 
 function showError(msg) {
     alert(msg);
-}
-
-
-// USE CASE 9 TEST CASE
-console.log("Testing UC-09...");
-
-console.log(performArithmetic(10, 5, "+")); 
-// 15
-
-console.log(performArithmetic(10, 5, "-")); 
-// 5
-
-console.log(performArithmetic(10, 5, "*")); 
-// 50
-
-console.log(performArithmetic(10, 5, "/")); 
-// 2
-
-try {
-    console.log(performArithmetic(10, 0, "/"));
-} catch (e) {
-    console.log(e.message); // Divide by zero
 }
 
 

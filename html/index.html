@@ -1,18 +1,20 @@
 <!-- 
-UC-JS-09: Perform Arithmetic Between Two Measurements
-Goal: Perform arithmetic operations (+, -, *, /) between two values after normalising units.
-Actor: System (conversion.js)
-Trigger: Arithmetic action is selected and valid inputs are provided.
+UC-JS-10: Populate Unit Dropdown
+Goal: Fill a select element with unit options retrieved from the server.
+Actor: End User (via ui.js)
+Trigger: getUnits() returns data.
 Steps Learned:
-  - Received second value already converted to the same unit as first value.
-  - Used switch-case to handle different operators (+, -, *, /).
-  - Applied arithmetic operations and rounded results to 6 decimal places.
-  - Handled division by zero with proper error handling.
-  - Threw error for unknown or unsupported operators.
-Outcome: Application returns accurate arithmetic result in the same unit with proper error handling.
+  - Cleared existing dropdown options using innerHTML.
+  - Created a default disabled option as a prompt.
+  - Iterated over units array using forEach().
+  - Created option elements dynamically using document.createElement().
+  - Set value and textContent for each option.
+  - Appended options to the select element.
+  - Handled null select element safely by returning early.
+Outcome: Dropdown is populated with unit options and ready for user selection.
 
 @author Developer
-@version 9.0
+@version 10.0
 -->
 
 
@@ -143,6 +145,7 @@ Outcome: Application returns accurate arithmetic result in the same unit with pr
     <script src="https://example.com/fontawesome/v7.0.1/js/brands.js"></script>
 <script src="../js/conversion.js"></script>
 <script src="../js/api.js"></script>
+<script src="../js/ui.js"></script>
 <script src="../js/app.js"></script>
 
 </body>
