@@ -1,18 +1,19 @@
 <!-- 
-UC-JS-04: Fetch Conversion Record
-Goal: Retrieve conversion factor or formula for a selected unit pair.
-Actor: System (api.js called by conversion.js)
-Trigger: Conversion logic requires data for selected FROM and TO units.
+UC-JS-05: Save Calculation Record to History
+Goal: Store each successful calculation in json-server history collection.
+Actor: System (api.js called by app.js)
+Trigger: A calculation completes successfully.
 Steps Learned:
-  - Used fetch() with query parameters ?from=X&to=Y to get specific conversion.
-  - Understood that json-server returns an array even for single results.
-  - Extracted the first object using data[0].
-  - Checked if returned array is empty and handled it by throwing an error.
-  - Ensured proper error handling using try-catch and propagated errors to caller.
-Outcome: Application can fetch accurate conversion data (factor or formula) for any valid unit pair.
+  - Used fetch() with POST method to send data to the server.
+  - Set request headers with "Content-Type": "application/json".
+  - Converted JavaScript object to JSON string using JSON.stringify().
+  - Sent record object containing type, action, expression, result, and timestamp.
+  - Parsed server response using res.json() to get saved object with id.
+  - Handled errors using try-catch without interrupting main app flow.
+Outcome: Every successful calculation is saved in history without affecting user experience if saving fails.
 
 @author Developer
-@version 4.0
+@version 5.0
 -->
 
 
