@@ -1,22 +1,19 @@
 <!-- 
-UC-JS-02: App Initialisation
-Goal: Initialise the application on page load by wiring up event listeners 
-      and loading default data.
-Actor: End User
-Trigger: DOMContentLoaded event fires.
+UC-JS-03: Fetch Units by Type
+Goal: Retrieve all units of a selected measurement type from json-server.
+Actor: System (api.js called by app.js)
+Trigger: User selects a type OR app initialises.
 Steps Learned:
-  - Wrapped all code inside DOMContentLoaded to ensure DOM readiness.
-  - Declared a shared "state" object to track current selections.
-  - Called attachEventListeners() to prepare UI interactions.
-  - Called loadUnits("Length") to pre-fill FROM and TO dropdowns.
-  - Set first type-card and first action-button as active.
-  - Hid operator row initially with toggleOperators(false).
-  - Loaded history records with loadHistory().
-Outcome: Application starts in a consistent state, ready for conversions, 
-         comparisons, or arithmetic operations.
+  - Defined BASE_URL to centralise API endpoint configuration.
+  - Used fetch() with query parameter ?type= to filter units server-side.
+  - Checked response status using res.ok before parsing JSON.
+  - Converted response to JSON using res.json().
+  - Returned an array of unit objects to the caller.
+  - Handled network/API errors using try-catch and returned empty array as fallback.
+Outcome: Application successfully fetches and provides unit data for the selected type.
 
 @author Developer
-@version 2.0
+@version 3.0
 -->
 
 
