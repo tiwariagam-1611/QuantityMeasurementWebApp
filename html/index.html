@@ -1,18 +1,20 @@
 <!-- 
-UC-JS-06: Load History
-Goal: Retrieve all saved calculation records from json-server in descending order.
-Actor: System (api.js called by app.js)
-Trigger: Page initialises OR after a new calculation is saved.
+UC-JS-07: Apply Conversion Factor or Formula
+Goal: Convert a value using either a multiplication factor or a formula.
+Actor: System (conversion.js)
+Trigger: Conversion action is selected and valid inputs are provided.
 Steps Learned:
-  - Used fetch() with query parameters _sort and _order to sort data on server.
-  - Retrieved history records sorted by timestamp (newest first).
-  - Parsed response using res.json().
-  - Returned array of history records to caller.
-  - Handled network errors using try-catch and returned empty array as fallback.
-Outcome: Application can load and display history records, showing most recent calculations first.
+  - Checked if input value is a valid number.
+  - Used multiplication when factor is available.
+  - Used formula string evaluation when factor is null.
+  - Replaced variable "x" in formula with actual value.
+  - Used eval() safely with predefined formulas from db.json.
+  - Rounded result to 6 decimal places using toFixed().
+  - Converted result back to number using parseFloat().
+Outcome: Accurate conversion result is returned with proper precision handling.
 
 @author Developer
-@version 6.0
+@version 7.0
 -->
 
 
@@ -141,8 +143,9 @@ Outcome: Application can load and display history records, showing most recent c
     <script src="https://example.com/fontawesome/v7.0.1/js/fontawesome.js" data-auto-replace-svg="nest"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/solid.js"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/brands.js"></script>
-    <script src="../js/api.js"></script>
-    <script src="../js/app.js"></script>
+<script src="../js/conversion.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/app.js"></script>
 
 </body>
 </html>

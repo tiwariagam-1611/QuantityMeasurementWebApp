@@ -48,3 +48,31 @@ function toggleOperators(show) {
 function showError(msg) {
     alert(msg);
 }
+
+// // UC 7 Test Cases
+// document.addEventListener("DOMContentLoaded", () => {
+    
+//     console.log("Testing UC-07...");
+
+//     // Test 1: Factor-based (km → m)
+//     const conv1 = { factor: 1000, formula: null };
+//     const res1 = applyConversion(2, conv1);
+//     console.log("2 km → m =", res1); // Expected: 2000
+
+//     // Test 2: Formula-based (C → F)
+//     const conv2 = { factor: null, formula: "(x*9/5)+32" };
+//     const res2 = applyConversion(10, conv2);
+//     console.log("10 C → F =", res2); // Expected: 50
+
+//     // Test 3: Same unit
+//     const res3 = applyConversion(5, null);
+//     console.log("Same unit =", res3); // Expected: 5
+
+//     // Test 4: Invalid input
+//     try {
+//         applyConversion("abc", conv1);
+//     } catch (e) {
+//         console.log("Error test:", e.message); // Expected: Invalid number
+//     }
+
+// });
