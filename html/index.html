@@ -1,20 +1,18 @@
 <!-- 
-UC-JS-07: Apply Conversion Factor or Formula
-Goal: Convert a value using either a multiplication factor or a formula.
+UC-JS-08: Compare Two Measurement Values
+Goal: Compare two values after converting them into a common base unit.
 Actor: System (conversion.js)
-Trigger: Conversion action is selected and valid inputs are provided.
+Trigger: Comparison action is selected and valid inputs are provided.
 Steps Learned:
-  - Checked if input value is a valid number.
-  - Used multiplication when factor is available.
-  - Used formula string evaluation when factor is null.
-  - Replaced variable "x" in formula with actual value.
-  - Used eval() safely with predefined formulas from db.json.
-  - Rounded result to 6 decimal places using toFixed().
-  - Converted result back to number using parseFloat().
-Outcome: Accurate conversion result is returned with proper precision handling.
+  - Validated both input values to ensure they are numbers.
+  - Compared values after normalisation to base units.
+  - Used conditional statements to determine greater, lesser, or equal values.
+  - Constructed human-readable output using template literals.
+  - Handled invalid inputs gracefully by returning an error message.
+Outcome: Application returns a clear comparison statement between two measurements.
 
 @author Developer
-@version 7.0
+@version 8.0
 -->
 
 

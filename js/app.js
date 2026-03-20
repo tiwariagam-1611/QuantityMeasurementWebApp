@@ -49,30 +49,20 @@ function showError(msg) {
     alert(msg);
 }
 
-// // UC 7 Test Cases
-// document.addEventListener("DOMContentLoaded", () => {
-    
-//     console.log("Testing UC-07...");
+// // UC 8 Test Cases
+console.log("Testing UC-08...");
 
-//     // Test 1: Factor-based (km → m)
-//     const conv1 = { factor: 1000, formula: null };
-//     const res1 = applyConversion(2, conv1);
-//     console.log("2 km → m =", res1); // Expected: 2000
+const result1 = compareValues(1, "km", 500, "m", 1000, 500);
+console.log(result1);
+// Expected: 1 km is GREATER than 500 m
 
-//     // Test 2: Formula-based (C → F)
-//     const conv2 = { factor: null, formula: "(x*9/5)+32" };
-//     const res2 = applyConversion(10, conv2);
-//     console.log("10 C → F =", res2); // Expected: 50
+const result2 = compareValues(2, "kg", 2000, "g", 2000, 2000);
+console.log(result2);
+// Expected: 2 kg is EQUAL to 2000 g
 
-//     // Test 3: Same unit
-//     const res3 = applyConversion(5, null);
-//     console.log("Same unit =", res3); // Expected: 5
+const result3 = compareValues("a", "km", 5, "m", 0, 5);
+console.log(result3);
+// Expected: Invalid values — cannot compare
 
-//     // Test 4: Invalid input
-//     try {
-//         applyConversion("abc", conv1);
-//     } catch (e) {
-//         console.log("Error test:", e.message); // Expected: Invalid number
-//     }
 
-// });
+
