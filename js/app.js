@@ -27,7 +27,6 @@ async function loadUnits(type) {
     try {
         const units = await getUnits(type);
 
-        // TEMP: just log data (no UI yet)
         console.log("Units loaded:", units);
 
     } catch (err) {
@@ -49,3 +48,12 @@ function toggleOperators(show) {
 function showError(msg) {
     alert(msg);
 }
+
+// document.addEventListener("DOMContentLoaded", async () => {
+//     try {
+//         const conv = await getConversion("km", "m");
+//         console.log("Conversion:", conv);
+//     } catch (e) {
+//         console.log(e.message);
+//     }
+// });

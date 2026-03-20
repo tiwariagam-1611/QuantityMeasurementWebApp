@@ -24,3 +24,27 @@ async function getUnits(type) {
         return []; // fail-safe (important)
     }
 }
+
+// UC-JS-04: Fetch Conversion Record
+
+async function getConversion(from, to) {
+    try {
+        const res = await fetch(`${BASE_URL}/conversions?from=${from}&to=${to}`);
+
+        if (!res.ok) {
+            throw new Error(`HTTP Error: ${res.status}`);
+        }
+
+        const data = await res.json(); // always array
+
+        if (!data.length) {
+            throw new Error("Conversion not available for this pair");
+        }
+
+        return data[0]; // return single object
+
+    } catch (error) {
+        console.error("Error in getConversion:", error);
+        throw error; 
+    }
+}

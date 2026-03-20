@@ -1,22 +1,18 @@
 <!-- 
-UC-JS-02: App Initialisation
-Goal: Initialise the application on page load by wiring up event listeners 
-      and loading default data.
-Actor: End User
-Trigger: DOMContentLoaded event fires.
+UC-JS-04: Fetch Conversion Record
+Goal: Retrieve conversion factor or formula for a selected unit pair.
+Actor: System (api.js called by conversion.js)
+Trigger: Conversion logic requires data for selected FROM and TO units.
 Steps Learned:
-  - Wrapped all code inside DOMContentLoaded to ensure DOM readiness.
-  - Declared a shared "state" object to track current selections.
-  - Called attachEventListeners() to prepare UI interactions.
-  - Called loadUnits("Length") to pre-fill FROM and TO dropdowns.
-  - Set first type-card and first action-button as active.
-  - Hid operator row initially with toggleOperators(false).
-  - Loaded history records with loadHistory().
-Outcome: Application starts in a consistent state, ready for conversions, 
-         comparisons, or arithmetic operations.
+  - Used fetch() with query parameters ?from=X&to=Y to get specific conversion.
+  - Understood that json-server returns an array even for single results.
+  - Extracted the first object using data[0].
+  - Checked if returned array is empty and handled it by throwing an error.
+  - Ensured proper error handling using try-catch and propagated errors to caller.
+Outcome: Application can fetch accurate conversion data (factor or formula) for any valid unit pair.
 
 @author Developer
-@version 2.0
+@version 4.0
 -->
 
 
