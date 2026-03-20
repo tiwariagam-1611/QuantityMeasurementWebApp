@@ -49,20 +49,27 @@ function showError(msg) {
     alert(msg);
 }
 
-// // UC 8 Test Cases
-console.log("Testing UC-08...");
 
-const result1 = compareValues(1, "km", 500, "m", 1000, 500);
-console.log(result1);
-// Expected: 1 km is GREATER than 500 m
+// USE CASE 9 TEST CASE
+console.log("Testing UC-09...");
 
-const result2 = compareValues(2, "kg", 2000, "g", 2000, 2000);
-console.log(result2);
-// Expected: 2 kg is EQUAL to 2000 g
+console.log(performArithmetic(10, 5, "+")); 
+// 15
 
-const result3 = compareValues("a", "km", 5, "m", 0, 5);
-console.log(result3);
-// Expected: Invalid values — cannot compare
+console.log(performArithmetic(10, 5, "-")); 
+// 5
+
+console.log(performArithmetic(10, 5, "*")); 
+// 50
+
+console.log(performArithmetic(10, 5, "/")); 
+// 2
+
+try {
+    console.log(performArithmetic(10, 0, "/"));
+} catch (e) {
+    console.log(e.message); // Divide by zero
+}
 
 
 
