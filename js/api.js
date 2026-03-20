@@ -65,6 +65,23 @@ async function saveHistory(record) {
 
     } catch (error) {
         console.error("Error saving history:", error);
-        // DO NOT throw → non-critical
+    }
+}
+
+// UC-JS-06: Load History
+
+async function getHistory() {
+    try {
+        const res = await fetch(`${BASE_URL}/history?_sort=timestamp&_order=desc`);
+
+        if (!res.ok) {
+            throw new Error(`HTTP Error: ${res.status}`);
+        }
+
+        return await res.json();
+
+    } catch (error) {
+        console.error("Error fetching history:", error);
+        return []; // fallback
     }
 }

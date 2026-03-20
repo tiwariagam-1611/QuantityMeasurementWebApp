@@ -1,19 +1,18 @@
 <!-- 
-UC-JS-05: Save Calculation Record to History
-Goal: Store each successful calculation in json-server history collection.
+UC-JS-06: Load History
+Goal: Retrieve all saved calculation records from json-server in descending order.
 Actor: System (api.js called by app.js)
-Trigger: A calculation completes successfully.
+Trigger: Page initialises OR after a new calculation is saved.
 Steps Learned:
-  - Used fetch() with POST method to send data to the server.
-  - Set request headers with "Content-Type": "application/json".
-  - Converted JavaScript object to JSON string using JSON.stringify().
-  - Sent record object containing type, action, expression, result, and timestamp.
-  - Parsed server response using res.json() to get saved object with id.
-  - Handled errors using try-catch without interrupting main app flow.
-Outcome: Every successful calculation is saved in history without affecting user experience if saving fails.
+  - Used fetch() with query parameters _sort and _order to sort data on server.
+  - Retrieved history records sorted by timestamp (newest first).
+  - Parsed response using res.json().
+  - Returned array of history records to caller.
+  - Handled network errors using try-catch and returned empty array as fallback.
+Outcome: Application can load and display history records, showing most recent calculations first.
 
 @author Developer
-@version 5.0
+@version 6.0
 -->
 
 
