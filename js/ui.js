@@ -93,3 +93,39 @@ function toggleOperators(show) {
     // show or hide
     operatorRow.style.display = show ? "flex" : "none";
 }
+
+// UC-JS-14: Render History List
+
+function renderHistory(records) {
+
+    const list = document.querySelector("#history-list");
+
+    // check element exists
+    if (!list) {
+        console.warn("history list not found");
+        return;
+    }
+
+    // handle undefined
+    if (!records) {
+        records = [];
+    }
+
+    // clear existing
+    list.innerHTML = "";
+
+    // empty case
+    if (!records.length) {
+        list.innerHTML = "<li>No history yet.</li>";
+        return;
+    }
+
+    // populate list
+    records.forEach(r => {
+        const li = document.createElement("li");
+
+        li.textContent = `${r.expression} = ${r.result} (${new Date(r.timestamp).toLocaleString()})`;
+
+        list.appendChild(li);
+    });
+}

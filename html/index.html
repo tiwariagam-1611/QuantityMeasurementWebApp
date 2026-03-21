@@ -1,18 +1,19 @@
 <!-- 
-UC-JS-13: Toggle Operator Row
-Goal: Show or hide the operator buttons (+, −, ×, ÷) based on selected action.
+UC-JS-14: Render History List
+Goal: Display calculation history records in the history panel.
 Actor: End User (via ui.js)
-Trigger: User clicks an action tab.
+Trigger: loadHistory() returns data OR a new record is saved.
 Steps Learned:
-  - Selected DOM element using querySelector().
-  - Controlled visibility using style.display property.
-  - Used conditional (ternary) operator for clean logic.
-  - Ensured operator row is visible only in Arithmetic mode.
-  - Handled missing element safely with a warning.
-Outcome: Operator buttons appear only when needed, improving UI clarity.
+  - Selected history container using querySelector().
+  - Cleared existing list using innerHTML.
+  - Handled empty or undefined records safely.
+  - Created list items dynamically using createElement().
+  - Formatted timestamp using toLocaleString().
+  - Appended each record to the list.
+Outcome: History panel shows all past calculations in a readable format.
 
 @author Developer
-@version 13.0
+@version 14.0
 -->
 
 <!DOCTYPE html>
@@ -147,6 +148,15 @@ Outcome: Operator buttons appear only when needed, improving UI clarity.
                         <span id="result-unit"></span>
                     </h2>
                 </div>
+            </div>
+
+            <!-- HISTORY PANEL -->
+            <div class="mt-5">
+                <p class="section-title">HISTORY</p>
+
+                <ul id="history-list" class="list-group">
+                    <li class="list-group-item">No history yet.</li>
+                </ul>
             </div>
 
         </div>
