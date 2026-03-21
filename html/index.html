@@ -1,21 +1,19 @@
 <!-- 
-UC-JS-12: Show Result
-Goal: Display calculated result value and unit in the result panel.
+UC-JS-13: Toggle Operator Row
+Goal: Show or hide the operator buttons (+, −, ×, ÷) based on selected action.
 Actor: End User (via ui.js)
-Trigger: A calculation completes successfully.
+Trigger: User clicks an action tab.
 Steps Learned:
-  - Selected DOM elements using querySelector().
-  - Updated textContent of result value and unit elements.
-  - Handled null or invalid values by showing a placeholder.
-  - Applied a temporary "highlight" class for visual feedback.
-  - Used setTimeout() to remove highlight after a delay.
-Outcome: Result is clearly displayed to the user with a visual highlight effect.
+  - Selected DOM element using querySelector().
+  - Controlled visibility using style.display property.
+  - Used conditional (ternary) operator for clean logic.
+  - Ensured operator row is visible only in Arithmetic mode.
+  - Handled missing element safely with a warning.
+Outcome: Operator buttons appear only when needed, improving UI clarity.
 
 @author Developer
-@version 12.0
+@version 13.0
 -->
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,128 +21,146 @@ Outcome: Result is clearly displayed to the user with a visual highlight effect.
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantity Measurement</title>
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    
 </head>
+
 <body>
 
     <div class="p-0">
 
         <!-- HEADER -->
-        
-        <div class="header text-center text-white py-4"onclick="changeBg()">
-            <h1 id="h1j">Welcome To Quantity Measurement</h1>
+        <div class="header text-center text-white py-4">
+            <h1>Quantity Measurement</h1>
         </div>
+
         <div class="m-5">
+
+            <!-- ================= TYPE ================= -->
             <p class="section-title">CHOOSE TYPE</p>
 
-            <div class="row g-4">
+            <div class="row g-4" id="type-selector">
 
                 <div class="col-md-3">
-                    <div class="type-card active text-center">
-                        <div class="icon"><i class="fa-solid fa-ruler" style="color: rgb(28, 149, 72);"></i></div>
+                    <div class="type-card active text-center" data-type="Length">
                         <p>Length</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="type-card text-center">
-                        <div class="icon"><i class="fa-solid fa-weight-scale" style="color: rgb(28, 149, 72);"></i></i></div>
-
+                    <div class="type-card text-center" data-type="Weight">
                         <p>Weight</p>
-                        
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="type-card text-center">
-                        <div class="icon"> <i class="fa-solid fa-temperature-arrow-down" style="color: rgb(28, 149, 72);"></i></div>
+                    <div class="type-card text-center" data-type="Temperature">
                         <p>Temperature</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="type-card text-center">
-                        <div class="icon"><i class="fa-solid fa-bottle-water" style="color: rgb(28, 149, 72);"></i></div>
+                    <div class="type-card text-center" data-type="Volume">
                         <p>Volume</p>
                     </div>
                 </div>
 
-                
-
             </div>
 
+
+            <!-- ================= ACTION ================= -->
             <p class="section-title mt-5">CHOOSE ACTION</p>
 
-            <div class="row g-3">
+            <div class="row g-3" id="action-selector">
 
                 <div class="col-md-4">
-                    <button class="btn action-btn active w-100">Comparison</button>
+                    <button class="btn action-btn active w-100" data-action="Comparison">
+                        Comparison
+                    </button>
                 </div>
 
                 <div class="col-md-4">
-                    <button class="btn action-btn w-100">Conversion</button>
+                    <button class="btn action-btn w-100" data-action="Conversion">
+                        Conversion
+                    </button>
                 </div>
 
                 <div class="col-md-4">
-                    <button class="btn action-btn w-100">Arithmetic</button>
+                    <button class="btn action-btn w-100" data-action="Arithmetic">
+                        Arithmetic
+                    </button>
                 </div>
 
             </div>
 
 
-            <!-- INPUT SECTION -->
-
+            <!-- ================= INPUT SECTION ================= -->
             <div class="mb-4 row mt-5 g-4">
 
                 <!-- FROM -->
-
                 <div class="col-md-6">
                     <label class="form-label fw-bold">FROM</label>
 
                     <div class="input-box">
-                        <h1>1</h1>
+                        <input type="number" id="from-value" class="form-control mb-3" placeholder="Enter value">
 
-                        <select class="form-select">
-                            <option>Kilometer</option>
-                            <option>Meter</option>
-                            <option>Centimeter</option>
-                        </select>
+                        <select id="from-unit" class="form-select"></select>
                     </div>
                 </div>
 
-
                 <!-- TO -->
-
                 <div class="col-md-6">
                     <label class="form-label fw-bold">TO</label>
 
                     <div class="input-box">
-                        <h1>1000</h1>
+                        <input type="number" id="to-value" class="form-control mb-3" placeholder="Enter value">
 
-                        <select class="form-select">
-                            <option>Meters</option>
-                            <option>Kilometers</option>
-                            <option>Centimeters</option>
-                        </select>
+                        <select id="to-unit" class="form-select"></select>
                     </div>
                 </div>
 
             </div>
 
-        </div>
 
+            <!-- ================= OPERATOR (UC-13) ================= -->
+            <div class="mt-4" id="operator-selector" style="display: none;">
+                <div class="d-flex justify-content-center gap-3">
+
+                    <button class="btn btn-secondary operator-btn" data-op="+">+</button>
+                    <button class="btn btn-secondary operator-btn" data-op="-">-</button>
+                    <button class="btn btn-secondary operator-btn" data-op="*">*</button>
+                    <button class="btn btn-secondary operator-btn" data-op="/">/</button>
+
+                </div>
+            </div>
+
+
+            <!-- ================= RESULT (UC-12) ================= -->
+            <div class="mt-5 text-center">
+                <p class="section-title">RESULT</p>
+
+                <div class="input-box">
+                    <h2>
+                        <span id="result-value">—</span>
+                        <span id="result-unit"></span>
+                    </h2>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+
+    <!-- ================= JS FILES ================= -->
     <script src="https://example.com/fontawesome/v7.0.1/js/fontawesome.js" data-auto-replace-svg="nest"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/solid.js"></script>
     <script src="https://example.com/fontawesome/v7.0.1/js/brands.js"></script>
-<script src="../js/conversion.js"></script>
-<script src="../js/api.js"></script>
-<script src="../js/ui.js"></script>
-<script src="../js/app.js"></script>
+    <script src="../js/conversion.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/app.js"></script>
 
 </body>
 </html>

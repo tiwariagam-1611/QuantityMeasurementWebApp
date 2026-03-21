@@ -77,3 +77,19 @@ function showResult(value, unitSymbol) {
         valueEl.classList.remove("highlight");
     }, 1500);
 }
+
+// UC-JS-13: Toggle Operator Row
+
+function toggleOperators(show) {
+
+    const operatorRow = document.querySelector("#operator-selector");
+
+    // check if element exists
+    if (!operatorRow) {
+        console.warn("operator row not found");
+        return;
+    }
+
+    // show or hide
+    operatorRow.style.display = show ? "flex" : "none";
+}
