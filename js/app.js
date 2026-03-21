@@ -51,4 +51,55 @@ function showError(msg) {
     alert(msg);
 }
 
+// UC-JS-15: Handle Type Card Click
+
+function attachEventListeners() {
+
+    const typeCards = document.querySelectorAll(".type-card");
+
+    const typeSelector = document.querySelector("#type-selector");
+
+    const fromInput = document.getElementById("from-value");
+    const toInput = document.getElementById("to-value");
+
+    const fromSelect = document.getElementById("from-unit");
+    const toSelect = document.getElementById("to-unit");
+
+    typeCards.forEach(card => {
+
+        card.addEventListener("click", async () => {
+
+            try {
+                // update state
+                state.type = card.dataset.type;
+
+                // highlight selected
+                setActive(typeSelector, card, ".type-card");
+
+                // clear inputs + result
+                fromInput.value = "";
+                toInput.value = "";
+                showResult(0, "");
+
+                // fetch new units
+                const units = await getUnits(state.type);
+
+                // populate dropdowns
+                populateDropdown(fromSelect, units);
+                populateDropdown(toSelect, units);
+
+                // reset unit selection in state
+                state.fromUnit = "";
+                state.toUnit = "";
+
+            } catch (err) {
+                console.error("Error loading units:", err);
+                alert("Failed to load units");
+            }
+
+        });
+
+    });
+}
+
 
