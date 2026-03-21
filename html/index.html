@@ -1,18 +1,18 @@
 <!-- 
-UC-JS-11: Set Active Button
-Goal: Highlight the selected button and remove active state from others.
+UC-JS-12: Show Result
+Goal: Display calculated result value and unit in the result panel.
 Actor: End User (via ui.js)
-Trigger: User clicks a selectable button (type, action, operator).
+Trigger: A calculation completes successfully.
 Steps Learned:
-  - Selected all sibling elements using querySelectorAll().
-  - Removed "active" class from all elements.
-  - Added "active" class only to the clicked element.
-  - Ensured only one element remains active at a time.
-  - Handled null parent element safely by returning early.
-Outcome: UI correctly reflects the current selection with proper highlighting.
+  - Selected DOM elements using querySelector().
+  - Updated textContent of result value and unit elements.
+  - Handled null or invalid values by showing a placeholder.
+  - Applied a temporary "highlight" class for visual feedback.
+  - Used setTimeout() to remove highlight after a delay.
+Outcome: Result is clearly displayed to the user with a visual highlight effect.
 
 @author Developer
-@version 11.0
+@version 12.0
 -->
 
 

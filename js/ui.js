@@ -44,3 +44,36 @@ function setActive(parentEl, clickedEl, childSelector) {
     // add active to clicked element
     clickedEl.classList.add("active");
 }
+
+
+// UC-JS-12: Show Result
+
+function showResult(value, unitSymbol) {
+
+    const valueEl = document.querySelector("#result-value");
+    const unitEl = document.querySelector("#result-unit");
+
+    // check elements exist
+    if (!valueEl || !unitEl) {
+        console.warn("Result elements not found");
+        return;
+    }
+
+    // handle null/undefined value
+    if (value === null || value === undefined) {
+        valueEl.textContent = "—";
+        unitEl.textContent = "";
+        return;
+    }
+
+    // set result
+    valueEl.textContent = value;
+    unitEl.textContent = unitSymbol || "";
+
+    // highlight effect
+    valueEl.classList.add("highlight");
+
+    setTimeout(() => {
+        valueEl.classList.remove("highlight");
+    }, 1500);
+}
