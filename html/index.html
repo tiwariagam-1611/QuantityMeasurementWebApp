@@ -1,22 +1,21 @@
 <!-- 
-UC-JS-15: Handle Type Card Click
-Goal: Update selected measurement type, reload units, and reset inputs/result.
+UC-JS-16: Handle Action Tab Click
+Goal: Update selected action mode, toggle operator row, and reset result.
 Actor: End User (via app.js)
-Trigger: User clicks a type card.
+Trigger: User clicks an action button (Comparison, Conversion, Arithmetic).
 Steps Learned:
-  - Attached click event listeners to all type cards.
-  - Read selected type using dataset.type.
+  - Attached click event listeners to all action buttons.
+  - Read selected action using dataset.action.
   - Updated shared state object.
-  - Used setActive() to highlight selected card.
-  - Cleared input values and reset result display.
-  - Fetched units dynamically using getUnits().
-  - Populated dropdowns using populateDropdown().
-  - Reset selected units in state.
-Outcome: UI updates dynamically when user switches measurement type.
+  - Used setActive() to highlight selected button.
+  - Toggled operator row visibility using toggleOperators().
+  - Reset result display using showResult().
+Outcome: Application switches between modes and updates UI accordingly.
 
 @author Developer
-@version 15.0
+@version 16.0
 -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +30,11 @@ Outcome: UI updates dynamically when user switches measurement type.
 </head>
 
 <body>
-
     <div class="p-0">
-
         <!-- HEADER -->
         <div class="header text-center text-white py-4">
             <h1>Quantity Measurement</h1>
         </div>
-
         <div class="m-5">
 
             <!-- ================= TYPE ================= -->
@@ -107,7 +103,7 @@ Outcome: UI updates dynamically when user switches measurement type.
                     <label class="form-label fw-bold">FROM</label>
 
                     <div class="input-box">
-                        <input type="number" id="from-value" class="form-control mb-3" placeholder="Enter value">
+                        <input type="number" id="from-value" class="form-control mb-3" placeholder="Enter value" value="">
 
                         <select id="from-unit" class="form-select"></select>
                     </div>
@@ -118,7 +114,7 @@ Outcome: UI updates dynamically when user switches measurement type.
                     <label class="form-label fw-bold">TO</label>
 
                     <div class="input-box">
-                        <input type="number" id="to-value" class="form-control mb-3" placeholder="Enter value">
+                        <input type="number" id="to-value" class="form-control mb-3" placeholder="Enter value" value="">
 
                         <select id="to-unit" class="form-select"></select>
                     </div>
@@ -152,7 +148,8 @@ Outcome: UI updates dynamically when user switches measurement type.
                 </div>
             </div>
 
-            <!-- HISTORY PANEL -->
+
+            <!-- ================= HISTORY (UC-14) ================= -->
             <div class="mt-5">
                 <p class="section-title">HISTORY</p>
 
@@ -166,9 +163,6 @@ Outcome: UI updates dynamically when user switches measurement type.
 
 
     <!-- ================= JS FILES ================= -->
-    <script src="https://example.com/fontawesome/v7.0.1/js/fontawesome.js" data-auto-replace-svg="nest"></script>
-    <script src="https://example.com/fontawesome/v7.0.1/js/solid.js"></script>
-    <script src="https://example.com/fontawesome/v7.0.1/js/brands.js"></script>
     <script src="../js/conversion.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/ui.js"></script>

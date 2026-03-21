@@ -103,3 +103,27 @@ function attachEventListeners() {
 }
 
 
+// UC-JS-16: Handle Action Tab Click
+
+const actionButtons = document.querySelectorAll(".action-btn");
+const actionSelector = document.querySelector("#action-selector");
+
+actionButtons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        // update state
+        state.action = btn.dataset.action;
+
+        // highlight selected button
+        setActive(actionSelector, btn, ".action-btn");
+
+        // show/hide operator row
+        toggleOperators(state.action === "Arithmetic");
+
+        // reset result
+        showResult(0, "");
+    });
+
+});
+
