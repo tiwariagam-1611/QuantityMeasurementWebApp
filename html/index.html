@@ -1,19 +1,12 @@
 <!-- 
-UC-JS-16: Handle Action Tab Click
-Goal: Update selected action mode, toggle operator row, and reset result.
-Actor: End User (via app.js)
-Trigger: User clicks an action button (Comparison, Conversion, Arithmetic).
-Steps Learned:
-  - Attached click event listeners to all action buttons.
-  - Read selected action using dataset.action.
-  - Updated shared state object.
-  - Used setActive() to highlight selected button.
-  - Toggled operator row visibility using toggleOperators().
-  - Reset result display using showResult().
-Outcome: Application switches between modes and updates UI accordingly.
+// UC-JS-17: Execute Calculation
+// Goal: Perform conversion, comparison, or arithmetic and display result.
+// Actor: End User (via app.js)
+// Trigger: Any input or dropdown change when all required values are present.
+// Outcome: Result displayed, history saved, UI updated.
 
 @author Developer
-@version 16.0
+@version 17.0
 -->
 
 
@@ -33,7 +26,7 @@ Outcome: Application switches between modes and updates UI accordingly.
     <div class="p-0">
         <!-- HEADER -->
         <div class="header text-center text-white py-4">
-            <h1>Quantity Measurement</h1>
+            <h1>Welcome to Quantity Measurement</h1>
         </div>
         <div class="m-5">
 
@@ -43,25 +36,40 @@ Outcome: Application switches between modes and updates UI accordingly.
             <div class="row g-4" id="type-selector">
 
                 <div class="col-md-3">
-                    <div class="type-card active text-center" data-type="Length">
+                        <div class="type-card active text-center" data-type="Length">
+                                                <div class="icon">
+                            <img alt="length"
+                                src="https://media.gettyimages.com/id/2159801874/vector/3d-pencil-with-triangle-ruler-vector.jpg?s=612x612&w=0&k=20&c=Ne38ALgaqw7Dcrc5zSsx6DcFLET-3u_tqWoXriSBNng="
+                                height="70px" width="70px">
+                        </div>
                         <p>Length</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="type-card text-center" data-type="Weight">
+                        <img alt="length"
+                                src="https://media.gettyimages.com/id/625739874/photo/heavy-weight-exercise.jpg?s=612x612&w=0&k=20&c=B1uzJW1DBei2Rx5hnt139tt9dt3L7TbKrpgwbMR-LrI="
+                                height="70px" width="90px">
+                        
                         <p>Weight</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="type-card text-center" data-type="Temperature">
+                        <img alt="length"
+                                src="https://media.gettyimages.com/id/2218135867/photo/thermometer-showing-tropical-heat-and-sky-with-hot-sun-rays-in-celsius-and-fahrenheit.jpg?s=612x612&w=0&k=20&c=Gaq5RahelR1LL8FW86wyIK_EbJmXRKOHInnkkQ38bOo="
+                                height="70px" width="90px">
                         <p>Temperature</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="type-card text-center" data-type="Volume">
+                        <img alt="length"
+                                src="https://media.gettyimages.com/id/692027135/photo/meniscus-curved-surface-of-water-in-graduated-cylinder-liquid-volume-measured-by-reading-the.jpg?s=612x612&w=0&k=20&c=QcYF1gQIkJl6ht8L4RPeykKBQInap9BRp3e1woUmL3E="
+                                height="70px" width="90px">
                         <p>Volume</p>
                     </div>
                 </div>
@@ -75,21 +83,20 @@ Outcome: Application switches between modes and updates UI accordingly.
             <div class="row g-3" id="action-selector">
 
                 <div class="col-md-4">
-                    <button class="btn action-btn active w-100" data-action="Comparison">
+                    <button type="button" class="btn action-btn active w-100" data-action="Comparison">
                         Comparison
                     </button>
                 </div>
 
                 <div class="col-md-4">
-                    <button class="btn action-btn w-100" data-action="Conversion">
+                    <button type="button" class="btn action-btn w-100" data-action="Conversion">
                         Conversion
                     </button>
                 </div>
 
                 <div class="col-md-4">
-                    <button class="btn action-btn w-100" data-action="Arithmetic">
-                        Arithmetic
-                    </button>
+                    <button type="button" class="btn action-btn w-100" data-action="Arithmetic">Arithmetic</button>
+     
                 </div>
 
             </div>
@@ -127,10 +134,11 @@ Outcome: Application switches between modes and updates UI accordingly.
             <div class="mt-4" id="operator-selector" style="display: none;">
                 <div class="d-flex justify-content-center gap-3">
 
-                    <button class="btn btn-secondary operator-btn" data-op="+">+</button>
-                    <button class="btn btn-secondary operator-btn" data-op="-">-</button>
-                    <button class="btn btn-secondary operator-btn" data-op="*">*</button>
-                    <button class="btn btn-secondary operator-btn" data-op="/">/</button>
+                    <button type="button" class="btn btn-secondary operator-btn" data-op="+">+</button>
+                    
+                    <button type="button" class="btn btn-secondary operator-btn" data-op="-">-</button>
+                    <button type="button" class="btn btn-secondary operator-btn" data-op="*">*</button>
+                    <button type="button" class="btn btn-secondary operator-btn" data-op="/">/</button>
 
                 </div>
             </div>

@@ -1,87 +1,58 @@
-// UC-JS-03: Fetch Units by Type
-
 const BASE_URL = "http://localhost:3000";
 
-/**
- * Fetch units based on selected type (Length, Weight, etc.)
- * @param {string} type
- * @returns {Array} list of units
- */
+// Fetch units
 async function getUnits(type) {
-    try {
-        const res = await fetch(`${BASE_URL}/units?type=${type}`);
-
-        // Always check response
-        if (!res.ok) {
-            throw new Error(`HTTP Error: ${res.status}`);
-        }
-
-        const data = await res.json();
-        return data; // returns array of units
-
-    } catch (error) {
-        console.error("Error in getUnits:", error);
-        return []; // fail-safe (important)
-    }
+    const res = await fetch(`${BASE_URL}/units?type=${type}`);
+    if (!res.ok) throw new Error("Failed to fetch units");
+    return await res.json();
 }
 
-// UC-JS-04: Fetch Conversion Record
-
+// Fetch conversion
 async function getConversion(from, to) {
-    try {
-        const res = await fetch(`${BASE_URL}/conversions?from=${from}&to=${to}`);
+    const res = await fetch(`${BASE_URL}/conversions?from=${from}&to=${to}`);
+    const data = await res.json();
 
-        if (!res.ok) {
-            throw new Error(`HTTP Error: ${res.status}`);
-        }
+    if (data.length) return data[0];
 
-        const data = await res.json(); // always array
+    // 🔁 auto reverse
+    const reverseRes = await fetch(`${BASE_URL}/conversions?from=${to}&to=${from}`);
+    const reverseData = await reverseRes.json();
 
-        if (!data.length) {
-            throw new Error("Conversion not available for this pair");
-        }
-
-        return data[0]; // return single object
-
-    } catch (error) {
-        console.error("Error in getConversion:", error);
-        throw error; 
+    if (reverseData.length && reverseData[0].factor) {
+        return { factor: 1 / reverseData[0].factor };
     }
+
+    throw new Error("No conversion found");
 }
 
-// UC-JS-05: Save History
-
+// Save history
 async function saveHistory(record) {
     try {
         const res = await fetch(`${BASE_URL}/history`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(record)
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                ...record,
+                id: Date.now().toString()
+            })
         });
 
         return await res.json();
-
-    } catch (error) {
-        console.error("Error saving history:", error);
+    } catch (e) {
+        console.error("History save failed", e);
     }
 }
 
-// UC-JS-06: Load History
-
+// Get history
 async function getHistory() {
     try {
-        const res = await fetch(`${BASE_URL}/history?_sort=timestamp&_order=desc`);
+        const res = await fetch(`${BASE_URL}/history`);
+        const data = await res.json();
 
-        if (!res.ok) {
-            throw new Error(`HTTP Error: ${res.status}`);
-        }
-
-        return await res.json();
-
-    } catch (error) {
-        console.error("Error fetching history:", error);
-        return []; // fallback
+        // sort manually
+        return data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    } catch (e) {
+        console.error("History fetch failed", e);
+        return [];
     }
 }

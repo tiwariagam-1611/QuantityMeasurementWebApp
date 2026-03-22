@@ -1,35 +1,343 @@
 {
   "units": [
-    { "id": 1, "type": "Length", "label": "Kilometer", "symbol": "km" },
-    { "id": 2, "type": "Length", "label": "Meter", "symbol": "m" },
-    { "id": 3, "type": "Length", "label": "Centimeter", "symbol": "cm" },
-
-    { "id": 4, "type": "Weight", "label": "Kilogram", "symbol": "kg" },
-    { "id": 5, "type": "Weight", "label": "Gram", "symbol": "g" },
-    { "id": 6, "type": "Weight", "label": "Pound", "symbol": "lb" },
-
-    { "id": 7, "type": "Volume", "label": "Liter", "symbol": "L" },
-    { "id": 8, "type": "Volume", "label": "Milliliter", "symbol": "mL" },
-    { "id": 9, "type": "Volume", "label": "Gallon", "symbol": "gal" },
-
-    { "id": 10, "type": "Temperature", "label": "Celsius", "symbol": "C" },
-    { "id": 11, "type": "Temperature", "label": "Fahrenheit", "symbol": "F" },
-    { "id": 12, "type": "Temperature", "label": "Kelvin", "symbol": "K" }
+    {
+      "id": "1",
+      "type": "Length",
+      "label": "Kilometer",
+      "symbol": "km"
+    },
+    {
+      "id": "2",
+      "type": "Length",
+      "label": "Meter",
+      "symbol": "m"
+    },
+    {
+      "id": "3",
+      "type": "Length",
+      "label": "Centimeter",
+      "symbol": "cm"
+    },
+    {
+      "id": "4",
+      "type": "Weight",
+      "label": "Kilogram",
+      "symbol": "kg"
+    },
+    {
+      "id": "5",
+      "type": "Weight",
+      "label": "Gram",
+      "symbol": "g"
+    },
+    {
+      "id": "6",
+      "type": "Weight",
+      "label": "Pound",
+      "symbol": "lb"
+    },
+    {
+      "id": "7",
+      "type": "Volume",
+      "label": "Liter",
+      "symbol": "L"
+    },
+    {
+      "id": "8",
+      "type": "Volume",
+      "label": "Milliliter",
+      "symbol": "mL"
+    },
+    {
+      "id": "9",
+      "type": "Volume",
+      "label": "Gallon",
+      "symbol": "gal"
+    },
+    {
+      "id": "10",
+      "type": "Temperature",
+      "label": "Celsius",
+      "symbol": "C"
+    },
+    {
+      "id": "11",
+      "type": "Temperature",
+      "label": "Fahrenheit",
+      "symbol": "F"
+    },
+    {
+      "id": "12",
+      "type": "Temperature",
+      "label": "Kelvin",
+      "symbol": "K"
+    }
   ],
-
   "conversions": [
-    { "id": 1, "from": "km", "to": "m", "factor": 1000, "formula": null },
-    { "id": 2, "from": "m", "to": "cm", "factor": 100, "formula": null },
-    { "id": 3, "from": "kg", "to": "g", "factor": 1000, "formula": null },
-    { "id": 4, "from": "lb", "to": "kg", "factor": 0.4536, "formula": null },
-    { "id": 5, "from": "L", "to": "mL", "factor": 1000, "formula": null },
-    { "id": 6, "from": "gal", "to": "L", "factor": 3.785, "formula": null },
-
-    { "id": 7, "from": "C", "to": "F", "factor": null, "formula": "(x*9/5)+32" },
-    { "id": 8, "from": "F", "to": "C", "factor": null, "formula": "(x-32)*5/9" },
-    { "id": 9, "from": "C", "to": "K", "factor": null, "formula": "x+273.15" },
-    { "id": 10, "from": "K", "to": "C", "factor": null, "formula": "x-273.15" }
+    {
+      "id": "1",
+      "from": "km",
+      "to": "m",
+      "factor": 1000,
+      "formula": null
+    },
+    {
+      "id": "2",
+      "from": "m",
+      "to": "cm",
+      "factor": 100,
+      "formula": null
+    },
+    {
+      "id": "3",
+      "from": "kg",
+      "to": "g",
+      "factor": 1000,
+      "formula": null
+    },
+    {
+      "id": "4",
+      "from": "lb",
+      "to": "kg",
+      "factor": 0.4536,
+      "formula": null
+    },
+    {
+      "id": "5",
+      "from": "L",
+      "to": "mL",
+      "factor": 1000,
+      "formula": null
+    },
+    {
+      "id": "6",
+      "from": "gal",
+      "to": "L",
+      "factor": 3.785,
+      "formula": null
+    },
+    {
+      "id": "7",
+      "from": "C",
+      "to": "F",
+      "factor": null,
+      "formula": "(x*9/5)+32"
+    },
+    {
+      "id": "8",
+      "from": "F",
+      "to": "C",
+      "factor": null,
+      "formula": "(x-32)*5/9"
+    },
+    {
+      "id": "9",
+      "from": "C",
+      "to": "K",
+      "factor": null,
+      "formula": "x+273.15"
+    },
+    {
+      "id": "10",
+      "from": "K",
+      "to": "C",
+      "factor": null,
+      "formula": "x-273.15"
+    }
   ],
-
-  "history": []
+  "history": [
+    {
+      "id": "4a14",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "1 km → m",
+      "result": 1000,
+      "timestamp": "2026-03-21T18:32:44.370Z"
+    },
+    {
+      "id": "f5fe",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "1 km → m",
+      "result": 1000,
+      "timestamp": "2026-03-22T07:34:43.652Z"
+    },
+    {
+      "id": "c8d2",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "1 km → m",
+      "result": 1000,
+      "timestamp": "2026-03-22T08:10:44.765Z"
+    },
+    {
+      "id": "73de",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "10 km → m",
+      "result": 10000,
+      "timestamp": "2026-03-22T08:10:51.688Z"
+    },
+    {
+      "id": "2076",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "1 km → m",
+      "result": 1000,
+      "timestamp": "2026-03-22T08:10:56.797Z"
+    },
+    {
+      "id": "d611",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "2 km → m",
+      "result": 2000,
+      "timestamp": "2026-03-22T08:11:02.337Z"
+    },
+    {
+      "id": "24a7",
+      "type": "Length",
+      "action": "Arithmetic",
+      "expression": "2 + 2000 (m)",
+      "result": 4,
+      "timestamp": "2026-03-22T08:11:07.382Z"
+    },
+    {
+      "id": "caed",
+      "type": "Length",
+      "action": "Arithmetic",
+      "expression": "2 - 2000 (m)",
+      "result": 0,
+      "timestamp": "2026-03-22T08:11:10.839Z"
+    },
+    {
+      "id": "4ab0",
+      "type": "Length",
+      "action": "Arithmetic",
+      "expression": "2 * 2000 (m)",
+      "result": 4,
+      "timestamp": "2026-03-22T08:11:12.041Z"
+    },
+    {
+      "id": "fa1e",
+      "type": "Length",
+      "action": "Arithmetic",
+      "expression": "2 / 2000 (m)",
+      "result": 1,
+      "timestamp": "2026-03-22T08:11:13.660Z"
+    },
+    {
+      "id": "1774167489161",
+      "type": "Length",
+      "action": "Conversion",
+      "expression": "1 km → m",
+      "result": 1000,
+      "timestamp": "2026-03-22T08:18:09.161Z"
+    },
+    {
+      "id": "1774167504608",
+      "type": "Weight",
+      "action": "Conversion",
+      "expression": "1 kg → g",
+      "result": 1000,
+      "timestamp": "2026-03-22T08:18:24.608Z"
+    },
+    {
+      "id": "1774167511515",
+      "type": "Weight",
+      "action": "Arithmetic",
+      "expression": "1 + 1000 (g)",
+      "result": 2,
+      "timestamp": "2026-03-22T08:18:31.515Z"
+    },
+    {
+      "id": "1774167517272",
+      "type": "Weight",
+      "action": "Arithmetic",
+      "expression": "1 + 1000 (lb)",
+      "result": 454.6,
+      "timestamp": "2026-03-22T08:18:37.272Z"
+    },
+    {
+      "id": "1774167525771",
+      "type": "Temperature",
+      "action": "Arithmetic",
+      "expression": "1 + 12 (F)",
+      "result": -10.111111,
+      "timestamp": "2026-03-22T08:18:45.771Z"
+    },
+    {
+      "id": "1774167542323",
+      "type": "Temperature",
+      "action": "Comparison",
+      "expression": "1 C ? 1211 F",
+      "result": "1 C is LESS than 1211 F",
+      "timestamp": "2026-03-22T08:19:02.323Z"
+    },
+    {
+      "id": "1774167548832",
+      "type": "Temperature",
+      "action": "Comparison",
+      "expression": "1111 C ? 1211 F",
+      "result": "1111 C is GREATER than 1211 F",
+      "timestamp": "2026-03-22T08:19:08.832Z"
+    },
+    {
+      "id": "1774167551316",
+      "type": "Temperature",
+      "action": "Comparison",
+      "expression": "111 C ? 1211 F",
+      "result": "111 C is LESS than 1211 F",
+      "timestamp": "2026-03-22T08:19:11.316Z"
+    },
+    {
+      "id": "1774167554192",
+      "type": "Temperature",
+      "action": "Comparison",
+      "expression": "111 C ? 121 F",
+      "result": "111 C is GREATER than 121 F",
+      "timestamp": "2026-03-22T08:19:14.192Z"
+    },
+    {
+      "id": "1774167561990",
+      "type": "Volume",
+      "action": "Comparison",
+      "expression": "1 L ? 111 mL",
+      "result": "1 L is GREATER than 111 mL",
+      "timestamp": "2026-03-22T08:19:21.990Z"
+    },
+    {
+      "id": "1774167564690",
+      "type": "Volume",
+      "action": "Comparison",
+      "expression": "1 mL ? 111 mL",
+      "result": "1 mL is LESS than 111 mL",
+      "timestamp": "2026-03-22T08:19:24.690Z"
+    },
+    {
+      "id": "1774167567092",
+      "type": "Volume",
+      "action": "Comparison",
+      "expression": "111 mL ? 111 mL",
+      "result": "111 mL is EQUAL to 111 mL",
+      "timestamp": "2026-03-22T08:19:27.092Z"
+    },
+    {
+      "id": "1774167572852",
+      "type": "Volume",
+      "action": "Comparison",
+      "expression": "111 gal ? 111 gal",
+      "result": "111 gal is EQUAL to 111 gal",
+      "timestamp": "2026-03-22T08:19:32.852Z"
+    },
+    {
+      "id": "1774167580750",
+      "type": "Volume",
+      "action": "Comparison",
+      "expression": "111 gal ? 111 gal",
+      "result": "111 gal is EQUAL to 111 gal",
+      "timestamp": "2026-03-22T08:19:40.750Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

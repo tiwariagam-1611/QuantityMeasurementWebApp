@@ -1,76 +1,49 @@
-// UC-JS-07: Apply Conversion
-
 function applyConversion(value, convObj) {
 
-    // check invalid number
-    if (isNaN(value)) {
-        throw new Error("Invalid number");
-    }
+    if (isNaN(value)) throw new Error("Invalid number");
 
-    // same unit case (alternate flow)
-    if (!convObj) {
-        return value;
-    }
+    if (!convObj) return value;
 
-    // factor-based conversion
-    if (convObj.factor !== null) {
+    // Factor-based conversion
+    if (convObj.factor !== null && convObj.factor !== undefined) {
         return parseFloat((value * convObj.factor).toFixed(6));
     }
 
-    // formula-based conversion
+    // Formula-based conversion
     try {
         const expr = convObj.formula.replace("x", value);
-        const result = eval(expr);
+
+        const result = Function('"use strict"; return (' + expr + ')')();
 
         return parseFloat(result.toFixed(6));
-
-    } catch (e) {
+    } catch {
         throw new Error("Bad formula");
     }
 }
 
-// UC-JS-08: Compare Values
 
 function compareValues(v1, u1, v2, u2, base1, base2) {
 
-    // check invalid values
-    if (isNaN(v1) || isNaN(v2)) {
+    if (isNaN(base1) || isNaN(base2)) {
         return "Invalid values — cannot compare";
     }
 
-    // compare base values
-    if (base1 > base2) {
-        return `${v1} ${u1} is GREATER than ${v2} ${u2}`;
-    }
-
-    if (base1 < base2) {
-        return `${v1} ${u1} is LESS than ${v2} ${u2}`;
-    }
+    if (base1 > base2) return `${v1} ${u1} is GREATER than ${v2} ${u2}`;
+    if (base1 < base2) return `${v1} ${u1} is LESS than ${v2} ${u2}`;
 
     return `${v1} ${u1} is EQUAL to ${v2} ${u2}`;
 }
 
-// UC-JS-09: Perform Arithmetic
 
-function performArithmetic(v1, v2normalised, op) {
+function performArithmetic(v1, v2, op) {
 
     switch (op) {
-
-        case "+":
-            return parseFloat((v1 + v2normalised).toFixed(6));
-
-        case "-":
-            return parseFloat((v1 - v2normalised).toFixed(6));
-
-        case "*":
-            return parseFloat((v1 * v2normalised).toFixed(6));
-
+        case "+": return parseFloat((v1 + v2).toFixed(6));
+        case "-": return parseFloat((v1 - v2).toFixed(6));
+        case "*": return parseFloat((v1 * v2).toFixed(6));
         case "/":
-            if (v2normalised === 0) {
-                throw new Error("Divide by zero");
-            }
-            return parseFloat((v1 / v2normalised).toFixed(6));
-
+            if (v2 === 0) throw new Error("Divide by zero");
+            return parseFloat((v1 / v2).toFixed(6));
         default:
             throw new Error("Unknown operator");
     }
